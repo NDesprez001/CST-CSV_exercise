@@ -2,6 +2,8 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
+import io
+import csv
 from flask import Flask, request, jsonify, url_for
 from flask_migrate import Migrate
 from flask_swagger import swagger
@@ -36,6 +38,14 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@app.route('/tournaments/upload', methods=['POST'])
+def tournament_upload():
+    f = request.files['csv']
+    f_read = io.StringIO( f.read().decode() )
+    file_rows = csv.reader( f_read, delimiter=',' )
+    for x in file_rows:
+        return jsonify(x)
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
