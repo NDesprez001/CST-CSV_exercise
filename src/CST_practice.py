@@ -1,4 +1,12 @@
 import datetime
 from datetime import datetime
+
+
 d = datetime.now()
-print(f'It is now: ' + d.strftime("%a %d, %B %Y 10:30 %p"))
+# dates = datetime.utcnow()
+
+
+
+dob = "June-16-2001 Sat, 11:59:00 AM"
+
+print(datetime.strptime(dob, "%B-%d-%Y %a, %X %p"))
