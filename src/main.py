@@ -44,8 +44,24 @@ def tournament_upload():
     f = request.files['csv']
     f_read = io.StringIO( f.read().decode() )
     file_rows = csv.reader( f_read, delimiter=',' )
-    for x in file_rows:
-        return jsonify(x)
+    lst = []
+    # for x in file_rows:
+    #     new_dict = {}
+    #     new_dict[x[0]] = {
+	# 	    x[0]: 'adljf',
+	# 	    x[1]: ';daslkfj',
+	# 	    x[2]: 'as;ld',
+	# 	    x[3]: 'asds',
+	# 	    x[4]: 'skgljs',
+	# 	    x[5]: 'disgkj',
+	# 	    x[6]: ';dlkjf',
+	# 	    x[7]: 'kjdshfg'
+	#     }
+    #     lst.append(new_dict)
+    #     return jsonify(lst)
+
+
+        
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
